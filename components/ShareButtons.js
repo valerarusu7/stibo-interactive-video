@@ -1,17 +1,29 @@
 import { FaFacebookSquare, FaInstagram, FaLinkedin } from "react-icons/fa";
+import Image from "next/image";
+import { useSelector } from "react-redux";
 
 function ShareButtons() {
+  const { answers } = useSelector((state) => state.interview);
   return (
-    <div className="relative p-3">
-      <div className="p-1 flex flex-col justify-start items-end">
-        <div className="flex justify-center items-center cursor-pointer">
-          <FaLinkedin className="w-10 h-10 text-blue-400 hover:opacity-80 transition transform duration-500" />
+    <div className="z-50 relative p-3 ">
+      <div className="p-1 flex justify-between items-start">
+        <div>
+          {answers.length > 0 && answers.length < 13 ? <Image src={require("../assets/images/stiboaccelerator_logo.png")} /> : null}
         </div>
-        <div className="flex justify-center items-center cursor-pointer mt-3">
-          <FaFacebookSquare className="w-10 h-10 text-blue-500 hover:opacity-80 transition transform duration-500" />
-        </div>
-        <div className="flex justify-center items-center cursor-pointer mt-3">
-          <FaInstagram className="w-10 h-10 text-red-500 hover:opacity-80 transition transform duration-500" />
+        <div>
+          <div className="flex justify-center items-center cursor-pointer">
+            <FaLinkedin className="w-10 h-10 text-gray-700 hover:opacity-70 transition transform duration-300" />
+          </div>
+          <a
+            href="https://www.facebook.com/sharer/sharer.php?u=example.org"
+            target="_blank"
+            className="flex justify-center items-center cursor-pointer mt-3"
+          >
+            <FaFacebookSquare className="w-10 h-10 text-gray-700 hover:opacity-70 transition transform duration-300" />
+          </a>
+          <div className="flex justify-center items-center cursor-pointer mt-3">
+            <FaInstagram className="w-10 h-10 text-gray-700 hover:opacity-70 transition transform duration-300" />
+          </div>
         </div>
       </div>
     </div>
