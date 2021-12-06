@@ -219,7 +219,7 @@ function Video() {
       ) : null}
 
       <div className="absolute w-full h-full overflow-hidden">
-        <video ref={video} src={require("../assets/videos/stibo_v3.mp4")} type="video/mp4" className="object-fill" />
+        <video ref={video} src={require("../public/stibo_v3.mp4")} type="video/mp4" className="object-fill" />
       </div>
       {showForm ? (
         <div
