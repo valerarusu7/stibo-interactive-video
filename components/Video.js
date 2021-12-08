@@ -59,9 +59,11 @@ function Video() {
     }
     setShowQuestion(false);
     setVideoPlays(true);
-    setTimeout(() => {
-      video.current.play();
-    }, 300);
+    if (video.current.currentTime > 0) {
+      setTimeout(() => {
+        video.current.play();
+      }, 300);
+    }
   }, [answers]);
 
   function bindChoice(time, question) {
