@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
 
 import Choice from "../components/Choice";
+import Image from "next/image";
 import Player from "../components/Player";
 import ShareButtons from "../components/ShareButtons";
-import Image from "next/image";
+import { useSelector } from "react-redux";
 
 function Video() {
   const { answers } = useSelector((state) => state.interview);
@@ -219,7 +219,12 @@ function Video() {
       ) : null}
 
       <div className="absolute w-full h-full overflow-hidden">
-        <video ref={video} src={require("../public/stibo_v3.mp4")} type="video/mp4" className="object-fill" />
+        <video
+          ref={video}
+          src={require("../assets/videos/stibo_v3.mp4")}
+          type="video/mp4"
+          className="object-fill"
+        />
       </div>
       {showForm ? (
         <div
@@ -229,7 +234,9 @@ function Video() {
         >
           <div className=" h-full w-96 bg-gradient-to-tl from-white to-gray-100 p-4 flex flex-col justify-center items-center">
             <div className=" flex flex-col justify-center items-center space-y-6">
-              <Image src={require("../assets/images/stiboaccelerator_logo.png")} />
+              <Image
+                src={require("../assets/images/stiboaccelerator_logo.png")}
+              />
               <p className="font-bold">Stay in our amazing Talent Pool</p>
               <input
                 type="text"
@@ -262,7 +269,11 @@ function Video() {
         </div>
       ) : null}
 
-      <div className={`${showStartButton ? "visible" : "invisible"} absolute w-full h-full `}>
+      <div
+        className={`${
+          showStartButton ? "visible" : "invisible"
+        } absolute w-full h-full `}
+      >
         <div className="flex flex-col justify-center items-center h-full">
           <button
             className="z-50 bg-black opacity-75 rounded-full p-4 w-48 h-48 hover:scale-105 transition transform duration-400"
