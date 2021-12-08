@@ -14,7 +14,7 @@ function Choice({ question, onClick }) {
     <div className="relative h-full ">
       {question === "q1" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q1.mp4")}
+          src={require("../assets/videos/loop1.mp4")}
           choice1="Bachelor project"
           choice2="Master thesis"
           onClick1={() => choose({ 1: "Bachelor Project" })}
@@ -23,7 +23,7 @@ function Choice({ question, onClick }) {
       ) : null}
       {question === "q2" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q2.mp4")}
+          src={require("../assets/videos/loop2.mp4")}
           choice1="Business potential"
           choice2="Tech and programming"
           onClick1={() => choose({ 2: "Business potential" })}
@@ -32,7 +32,7 @@ function Choice({ question, onClick }) {
       ) : null}
       {question === "q3" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q3.mp4")}
+          src={require("../assets/videos/loop3.mp4")}
           choice1="HQ in Denmark"
           choice2="Atlanta/London"
           onClick1={() => choose({ 3: "HQ in Denmark" })}
@@ -41,7 +41,7 @@ function Choice({ question, onClick }) {
       ) : null}
       {question === "q4" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q4.mp4")}
+          src={require("../assets/videos/loop4.mp4")}
           choice1="That we provide you with a research problem"
           choice2="To work on your own idea"
           onClick1={() =>
@@ -52,7 +52,7 @@ function Choice({ question, onClick }) {
       ) : null}
       {question === "q5" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q5.mp4")}
+          src={require("../assets/videos/loop5.mp4")}
           choice1="To work with something you already know"
           choice2="To investigate unknown teritorry"
           onClick1={() =>
@@ -63,7 +63,7 @@ function Choice({ question, onClick }) {
       ) : null}
       {question === "q6" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q6.mp4")}
+          src={require("../assets/videos/loop6.mp4")}
           choice1="Master data management"
           choice2="Software for storytelling"
           onClick1={() => choose({ 6: "Master data management" })}
@@ -72,7 +72,7 @@ function Choice({ question, onClick }) {
       ) : null}
       {question === "q7" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q7.mp4")}
+          src={require("../assets/videos/loop7.mp4")}
           choice1="By comparing different theories"
           choice2="Experimenting with real world cases"
           onClick1={() => choose({ 7: "By comparing different theories" })}
@@ -81,7 +81,7 @@ function Choice({ question, onClick }) {
       ) : null}
       {question === "q8" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q8.mp4")}
+          src={require("../assets/videos/loop8.mp4")}
           choice1="An open environment with other people"
           choice2="My own quiet office space"
           onClick1={() =>
@@ -92,7 +92,7 @@ function Choice({ question, onClick }) {
       ) : null}
       {question === "q9" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q9.mp4")}
+          src={require("../assets/videos/loop9.mp4")}
           choice1="Yes"
           choice2="No"
           onClick1={() => choose({ 9: "Yes" })}
@@ -101,7 +101,7 @@ function Choice({ question, onClick }) {
       ) : null}
       {question === "q10" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q10.mp4")}
+          src={require("../assets/videos/loop10.mp4")}
           choice1="I'm joining an established company"
           choice2="I'm using my project to kickstart my own startup"
           onClick1={() => choose({ 10: "I'm joining an established company" })}
@@ -113,7 +113,7 @@ function Choice({ question, onClick }) {
 
       {question === "q11" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q11.mp4")}
+          src={require("../assets/videos/loop11.mp4")}
           choice1="Fronted/UX"
           choice2="Backend/Development"
           onClick1={() => choose({ 11: "Fronted/UX" })}
@@ -123,7 +123,7 @@ function Choice({ question, onClick }) {
 
       {question === "q12" ? (
         <ChoiceComponent
-          src={require("../assets/videos/loop_q12.mp4")}
+          src={require("../assets/videos/loop12.mp4")}
           choice1="Meat/fish"
           choice2="Salad"
           muted={true}

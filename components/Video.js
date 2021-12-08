@@ -223,7 +223,9 @@ function Video() {
       <div className="absolute w-full h-full overflow-hidden">
         <video
           ref={video}
-          src={require("../assets/videos/stibo_v3.mp4")}
+          src={
+            "https://m204.syncusercontent1.com/mfs-60:30ce871c8ca5ff6e06bfdc09c1c18b5a=============================/p/stibo_main.mp4?allowdd=0&datakey=SFp09uEoEbWVuSUUBZtjZph8D8Ot3wIqp/+PT05Hr3sBGTZAdJ1BFz0KbiZ0e9jKe4ltxlf+5gRrkLu50qzLSsrv4c09cX97Sk5zCJkjm7Kr7TLyFdctN7+jnYnD8sdHBMVDWRZ9w/vYjnEGykcuh+vOIzLJ/C2hq6mFySb1IXt4XYIQ5OeeKdK/34oSaxfRiQts7/z4ISjXnXIqUR8Q1ZpG4Zpn+c9ovxROX4qtLqq+Y9oV8ACnLszGGWGhzIFW0VMRT+I/I5NoC2+z9oYy7/hSxj1pL4OLSS6vNtKPuX33EHHSV7oTp/UFAgjUEJxDrfmWuoheWBiqHEatY03qcg&engine=ln-1.11.7&errurl=PutOcUfSpViO0v2Kadw82wBe2yFY3QIIuFkIfjWczehJB1MgQR06WkNkGzLz0XT4bQXKDrROn44hM1EzPGxec82Cp45JRvM5PZH1n9G6k/+zzlpNwcr9TNMDiwVyzR5x3Tt8a0hAndrZBowJer2kV6xuls2Mr4OO/MahmKZ0ghphRFgSCxLmA3SfavIVJSoK0F6wWEYB8gNAdQ4f4mv9dggYOUvhtyPaTSSsUdXF1OUAMS0921iic9R8aVWXtFMtyms8ldUSnQB2dXuWRrZE66cuijfsaloKj1QRypmuFhHWOYzLpdO5sbP0CaEkLdSbl2Srhis0y4U81enmJzLsqw==&header1=Q29udGVudC1UeXBlOiB2aWRlby9tcDQ&header2=Q29udGVudC1EaXNwb3NpdGlvbjogaW5saW5lOyBmaWxlbmFtZT0ic3RpYm9fbWFpbi5tcDQiO2ZpbGVuYW1lKj1VVEYtOCcnc3RpYm9fbWFpbi5tcDQ7&ipaddress=3642533107&linkcachekey=8ab21c0d0&linkoid=1252370013&mode=101&sharelink_id=7013777440013&timestamp=1638977126515&uagent=72d280e4492dd44e418a70a3f6019884db193aa2&signature=f79c76c34088a79291f86e8bffe8f5b4a3081d5c&cachekey=60:30ce871c8ca5ff6e06bfdc09c1c18b5a============================="
+          }
           type="video/mp4"
           className="object-fill"
         />
