@@ -2,8 +2,10 @@ import { useEffect, useRef, useState } from "react";
 
 import Choice from "../components/Choice";
 import Image from "next/image";
+import Loading from "./Loading";
 import Player from "../components/Player";
 import ShareButtons from "../components/ShareButtons";
+import useInterval from "../components/useInterval";
 import { useSelector } from "react-redux";
 
 function Video() {
@@ -19,58 +21,28 @@ function Video() {
   const [stopped, setStopped] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [download, setDownload] = useState(0);
+  useInterval(() => {
+    if (download < 100) {
+      setDownload(Number(download + 1));
+    }
+  }, 200);
 
   useEffect(() => {
-    var req = new XMLHttpRequest();
-    req.open(
-      "GET",
-      "https://m204.syncusercontent1.com/mfs-60:30ce871c8ca5ff6e06bfdc09c1c18b5a=============================/p/stibo_main.mp4?allowdd=0&datakey=FO31e7egVCwyyaDGW5NL2BvZXrYzbXIj/NtpXZnvGOmrrf5/u+My8WlJs6b4jWmKMLqgOAltWnkO0aZzWFWRXwr982fQAvknv1R/ilY0uia1JhV+ZDEKeCw9i91PLdt+DI7pULgl8FKaAmdEE10pbyhRrVw6PVWuKxZZbjvxyz3zRVckoxLcDYMvT20NMsw9wkpXwJKv4j4lsQgdu21rwSFQ7AYR4MXFpMmpoOfR+VRERpDzIVYNBJzscDVMp8PNb3AOXOcOqVA3U/12gjN10dmu4513PH1XOS4WnsAuMmHjfFBVtlkCKnN/yxAX7yMg4wuUpqyJZdn49doZOnGQLg&engine=ln-1.11.7&errurl=Vj3hirGCyU13y9u/AKNvtY7th/qm/9KhAJ3efmJJNH5IGbBKbIX/WmBpd4YbhFsimEmw1Hf0u3hgJ1idFCQHPnqJp/CiMLkA/gOlbwLIgovZI3k/ifGRi+cgL4jH6+BHcKUaiI06DTDwFyEICNP9XwDnw/IuIsS70qw6aNi/nzbwwfXzZUrcHCUjLeBjWr+ki+N5c5Sgg6qx5LbS1ZcvJCltUx6a8oJds5VkqDRmJp4eQhz7zp2WXwtIfpzZ4pgvrw8HuLi4L4+tTzvLEBaMZIyUlSbe/VbKcokvFzmyMo6awQdmTjLAkvtpUFT/OAuu8/vnPjzQNlxqwGEquNfGXQ==&header1=Q29udGVudC1UeXBlOiB2aWRlby9tcDQ&header2=Q29udGVudC1EaXNwb3NpdGlvbjogaW5saW5lOyBmaWxlbmFtZT0ic3RpYm9fbWFpbi5tcDQiO2ZpbGVuYW1lKj1VVEYtOCcnc3RpYm9fbWFpbi5tcDQ7&ipaddress=3642533107&linkcachekey=8ab21c0d0&linkoid=1252370013&mode=101&sharelink_id=7013777440013&timestamp=1638978345817&uagent=72d280e4492dd44e418a70a3f6019884db193aa2&signature=af5a486061447a668e0c55b3bbcf763442794354&cachekey=60:30ce871c8ca5ff6e06bfdc09c1c18b5a=============================",
-      true
-    );
-    req.responseType = "blob";
-    req.addEventListener(
-      "progress",
-      function (evt) {
-        if (evt.lengthComputable) {
-          let percentComplete = evt.loaded / evt.total;
-          setDownload(Number((percentComplete * 100).toFixed(0)));
-        }
-      },
-      false
-    );
-
-    req.onload = function () {
-      // Onload is triggered even on 404
-      // so we need to check the status code
-      if (this.status === 200) {
-        var videoBlob = this.response;
-        var vid = URL.createObjectURL(videoBlob); // IE10+
-        // Video is now downloaded
-        // and we can set it as source on the video element
-        video.current.src = vid;
-      }
-    };
-    req.onerror = function () {
-      // Error
-    };
-
-    req.send();
-
     video.current.load();
     video.current.currentTime = 0;
     bindChoice(41, "companies"); //good!
-    bindChoice(120.6, "q1"); // good!
-    bindChoice(135.8, "q2"); //good!
-    bindChoice(152, "q3"); //good!
-    bindChoice(167.5, "q4"); //good!
-    bindChoice(182.4, "q5"); //good!
-    bindChoice(196.7, "q6"); //good!
-    bindChoice(209.7, "q7"); //good!
-    bindChoice(213.1, "q8"); // good!
-    bindChoice(216, "q9"); //good!
-    bindChoice(251, "q10"); //good!
-    bindChoice(269.2, "q11"); //good!
-    bindChoice(283.1, "q12"); //good!
+    bindChoice(120.4, "q1"); // good!
+    bindChoice(135.6, "q2"); //good!
+    bindChoice(151.9, "q3"); //good!
+    bindChoice(167.4, "q4"); //good!
+    bindChoice(182.3, "q5"); //good!
+    bindChoice(196.6, "q6"); //good!
+    bindChoice(209.6, "q7"); //good!
+    bindChoice(213, "q8"); // good!
+    bindChoice(215.9, "q9"); //good!
+    bindChoice(250.9, "q10"); //good!
+    bindChoice(269.1, "q11"); //good!
+    bindChoice(283, "q12"); //good!
     const form = function () {
       if (this.currentTime >= 320) {
         setShowForm(true);
@@ -255,19 +227,18 @@ function Video() {
           <Choice question={question} onClick={(e) => playNextVideo(e)} />
         </div>
       ) : null}
-      <div
-        className={`${
-          download !== 100 ? "visible" : "hidden"
-        } absolute w-full h-full overflow-hidden flex justify-center items-center`}
-      >
-        <p className="text-8xl font-bold">{`${download}%`}</p>
-      </div>
+      <Loading download={download} />
       <div
         className={`${
           download === 100 ? "visible" : "hidden"
         } absolute w-full h-full overflow-hidden`}
       >
-        <video ref={video} src="" type="video/mp4" className="object-fill" />
+        <video ref={video} preload="auto" width={1920} height={1080}>
+          <source
+            src="https://m202.syncusercontent1.com/mfs-60:30ce871c8ca5ff6e06bfdc09c1c18b5a=============================/p/stibo_main.mp4?allowdd=0&datakey=ByonIIEywd9T32TZHbK/p3YHHQ/h753WBuDypxYvQRAL3gmkUcyvNaCV4gVgqHjYLMRXHfPjTm8QNJa9pf/wuWoZM++B/miV0yOESOiX9ExUkHmJFilXiXT937riLCNRYACBqo0Ebv46kr9H1xqDrI4ewWJSkh3HkGxme28IyRRarI5aDXvl0AVidPksQLwghQZ7rJKCXVLzU1sFv9ucRwmbcNq35UG8+QFDkRtmmIqIkIPreY+a7gBNqgyGGbQLN8AZwqnvBJbPdF5HAMJgqkXIhmOuWaYjLfVCwvMua+4Co5JFt5UV+FRFI6VUn1RjhWuubZvPY76HxmBmafdJ0A&engine=ln-1.11.7&errurl=Pai68cRCg/1eFltxhizgjAR/YwgkwWTSeie+Z8ERjC29wxrK+RYQGx5D6fNSwxEwGBNKK6cvzTiTGMeGBgfGGLiDFzjLaB9R4Pt7xhzOpyRECCmdXQco3WtRCnMipJn0IUt/lRL73V98wx2mfoFfprHYji4jTFlFklRsj5V8WNN25ogz53Xwc2nhwHSUM7AbQKoY7q5kqS+ieldNdrx7FsToqE1PbM7mumUWD2NPNqsobMLxYn4yK7mBK44iLXqmInkJQmNC0JEDN1qW0LEpZ0rKVf1kGaC0sxhGY4/G2/ltIpuT1+8ds6LeT6FueDq+Y7Ls+95lGPP7WCGcvm5dnw==&header1=Q29udGVudC1UeXBlOiB2aWRlby9tcDQ&header2=Q29udGVudC1EaXNwb3NpdGlvbjogaW5saW5lOyBmaWxlbmFtZT0ic3RpYm9fbWFpbi5tcDQiO2ZpbGVuYW1lKj1VVEYtOCcnc3RpYm9fbWFpbi5tcDQ7&ipaddress=1346270556&linkcachekey=fcf79cac0&linkoid=1252370013&mode=101&sharelink_id=7016697890013&timestamp=1639139422848&uagent=b274bf3fe732d1c6ef10617981b01b2389f6a386&signature=42f27da8922e80ae6d63a58e060efde4b93f7054&cachekey=60:30ce871c8ca5ff6e06bfdc09c1c18b5a============================="
+            type="video/mp4"
+          />
+        </video>
       </div>
       {showForm ? (
         <div
@@ -311,7 +282,6 @@ function Video() {
           </div>
         </div>
       ) : null}
-
       <div
         className={`${showStartButton ? "visible" : "invisible"} ${
           download === 100 ? "visible" : "hidden"

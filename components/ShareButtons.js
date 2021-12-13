@@ -1,4 +1,5 @@
 import { FaFacebookSquare, FaInstagram, FaLinkedin } from "react-icons/fa";
+
 import Image from "next/image";
 import { useSelector } from "react-redux";
 
@@ -7,8 +8,12 @@ function ShareButtons() {
   return (
     <div className="z-50 relative p-3 ">
       <div className="p-1 flex justify-between items-start">
-        <div>
-          {answers.length > 0 && answers.length < 13 ? <Image src={require("../assets/images/stiboaccelerator_logo.png")} /> : null}
+        <div className="h-32">
+          {answers.length > 0 && answers.length < 13 ? (
+            <Image
+              src={require("../assets/images/stiboaccelerator_logo.png")}
+            />
+          ) : null}
         </div>
         <div>
           <div className="flex justify-center items-center cursor-pointer">
