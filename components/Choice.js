@@ -44,9 +44,7 @@ function Choice({ question, onClick }) {
           src={require("../assets/videos/loop4.mp4")}
           choice1="That we provide you with a research problem"
           choice2="To work on your own idea"
-          onClick1={() =>
-            choose({ 4: "That we provide you with a research problem" })
-          }
+          onClick1={() => choose({ 4: "That we provide you with a research problem" })}
           onClick2={() => choose({ 4: "To work on your own idea" })}
         />
       ) : null}
@@ -55,9 +53,7 @@ function Choice({ question, onClick }) {
           src={require("../assets/videos/loop5.mp4")}
           choice1="To work with something you already know"
           choice2="To investigate unknown teritorry"
-          onClick1={() =>
-            choose({ 5: "To work with something you already know" })
-          }
+          onClick1={() => choose({ 5: "To work with something you already know" })}
           onClick2={() => choose({ 5: "To investigate unknown teritorry" })}
         />
       ) : null}
@@ -84,9 +80,7 @@ function Choice({ question, onClick }) {
           src={require("../assets/videos/loop8.mp4")}
           choice1="An open environment with other people"
           choice2="My own quiet office space"
-          onClick1={() =>
-            choose({ 8: "An open environment with other people" })
-          }
+          onClick1={() => choose({ 8: "An open environment with other people" })}
           onClick2={() => choose({ 8: "My own quiet office space" })}
         />
       ) : null}
@@ -105,9 +99,7 @@ function Choice({ question, onClick }) {
           choice1="I'm joining an established company"
           choice2="I'm using my project to kickstart my own startup"
           onClick1={() => choose({ 10: "I'm joining an established company" })}
-          onClick2={() =>
-            choose({ 10: "I'm using my project to kickstart my own startup" })
-          }
+          onClick2={() => choose({ 10: "I'm using my project to kickstart my own startup" })}
         />
       ) : null}
 
@@ -124,17 +116,15 @@ function Choice({ question, onClick }) {
       {question === "q12" ? (
         <ChoiceComponent
           src={require("../assets/videos/loop12.mp4")}
-          choice1="Meat/fish"
-          choice2="Salad"
+          choice1="Salad"
+          choice2="Meat/fish"
           muted={true}
-          onClick1={() => choose({ 12: "Meat/fish" })}
-          onClick2={() => choose({ 12: "Salad" })}
+          onClick1={() => choose({ 12: "Salad" })}
+          onClick2={() => choose({ 12: "Meat/fish" })}
         />
       ) : null}
 
-      {question === "companies" ? (
-        <Companies onClick={() => choose({ 0: "Stibo Accelerator" })} />
-      ) : null}
+      {question === "companies" ? <Companies onClick={() => choose({ 0: "Stibo Accelerator" })} /> : null}
     </div>
   );
 }

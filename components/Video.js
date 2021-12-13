@@ -228,16 +228,9 @@ function Video() {
         </div>
       ) : null}
       <Loading download={download} />
-      <div
-        className={`${
-          download === 100 ? "visible" : "hidden"
-        } absolute w-full h-full overflow-hidden`}
-      >
-        <video ref={video} preload="auto" width={1920} height={1080}>
-          <source
-            src="https://m202.syncusercontent1.com/mfs-60:30ce871c8ca5ff6e06bfdc09c1c18b5a=============================/p/stibo_main.mp4?allowdd=0&datakey=ByonIIEywd9T32TZHbK/p3YHHQ/h753WBuDypxYvQRAL3gmkUcyvNaCV4gVgqHjYLMRXHfPjTm8QNJa9pf/wuWoZM++B/miV0yOESOiX9ExUkHmJFilXiXT937riLCNRYACBqo0Ebv46kr9H1xqDrI4ewWJSkh3HkGxme28IyRRarI5aDXvl0AVidPksQLwghQZ7rJKCXVLzU1sFv9ucRwmbcNq35UG8+QFDkRtmmIqIkIPreY+a7gBNqgyGGbQLN8AZwqnvBJbPdF5HAMJgqkXIhmOuWaYjLfVCwvMua+4Co5JFt5UV+FRFI6VUn1RjhWuubZvPY76HxmBmafdJ0A&engine=ln-1.11.7&errurl=Pai68cRCg/1eFltxhizgjAR/YwgkwWTSeie+Z8ERjC29wxrK+RYQGx5D6fNSwxEwGBNKK6cvzTiTGMeGBgfGGLiDFzjLaB9R4Pt7xhzOpyRECCmdXQco3WtRCnMipJn0IUt/lRL73V98wx2mfoFfprHYji4jTFlFklRsj5V8WNN25ogz53Xwc2nhwHSUM7AbQKoY7q5kqS+ieldNdrx7FsToqE1PbM7mumUWD2NPNqsobMLxYn4yK7mBK44iLXqmInkJQmNC0JEDN1qW0LEpZ0rKVf1kGaC0sxhGY4/G2/ltIpuT1+8ds6LeT6FueDq+Y7Ls+95lGPP7WCGcvm5dnw==&header1=Q29udGVudC1UeXBlOiB2aWRlby9tcDQ&header2=Q29udGVudC1EaXNwb3NpdGlvbjogaW5saW5lOyBmaWxlbmFtZT0ic3RpYm9fbWFpbi5tcDQiO2ZpbGVuYW1lKj1VVEYtOCcnc3RpYm9fbWFpbi5tcDQ7&ipaddress=1346270556&linkcachekey=fcf79cac0&linkoid=1252370013&mode=101&sharelink_id=7016697890013&timestamp=1639139422848&uagent=b274bf3fe732d1c6ef10617981b01b2389f6a386&signature=42f27da8922e80ae6d63a58e060efde4b93f7054&cachekey=60:30ce871c8ca5ff6e06bfdc09c1c18b5a============================="
-            type="video/mp4"
-          />
+      <div className={`${download === 100 ? "visible" : "hidden"} absolute w-full h-full overflow-hidden`}>
+        <video ref={video} preload="auto">
+          <source src="/api/video" type="video/mp4" />
         </video>
       </div>
       {showForm ? (
@@ -248,9 +241,7 @@ function Video() {
         >
           <div className=" h-full w-96 bg-gradient-to-tl from-white to-gray-100 p-4 flex flex-col justify-center items-center">
             <div className=" flex flex-col justify-center items-center space-y-6">
-              <Image
-                src={require("../assets/images/stiboaccelerator_logo.png")}
-              />
+              <Image src={require("../assets/images/stiboaccelerator_logo.png")} />
               <p className="font-bold">Stay in our amazing Talent Pool</p>
               <input
                 type="text"
@@ -282,11 +273,7 @@ function Video() {
           </div>
         </div>
       ) : null}
-      <div
-        className={`${showStartButton ? "visible" : "invisible"} ${
-          download === 100 ? "visible" : "hidden"
-        } absolute w-full h-full `}
-      >
+      <div className={`${showStartButton ? "visible" : "invisible"} ${download === 100 ? "visible" : "hidden"} absolute w-full h-full `}>
         <div className="flex flex-col justify-center items-center h-full">
           <button
             className="z-50 bg-black opacity-75 rounded-full p-4 w-48 h-48 hover:scale-105 transition transform duration-400"

@@ -1,13 +1,14 @@
+import { useEffect, useRef } from "react";
+
 function ChoiceComponent({ onClick1, onClick2, src, choice1, choice2, muted }) {
+  const video = useRef();
+
+  useEffect(() => {
+    video.current.load();
+  }, [src]);
   return (
     <div className=" flex justify-center items-end h-screen transition transform duration-300">
-      <video
-        src={src}
-        muted={muted}
-        loop
-        autoPlay
-        className="w-full m-8"
-      ></video>
+      <video ref={video} src={src} muted={muted} loop autoPlay className="w-full m-8"></video>
       <div className="absolute grid grid-cols-2 gap-0 items-end w-full h-48">
         <div
           className="h-full flex justify-center items-center bg-black opacity-70 hover:bg-white 
