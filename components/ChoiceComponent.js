@@ -6,6 +6,7 @@ function ChoiceComponent({ onClick1, onClick2, src, choice1, choice2, muted }) {
         muted={muted}
         loop
         autoPlay
+        preload="auto"
         className="w-full m-8"
       ></video>
       <div className="absolute grid grid-cols-2 gap-0 items-end w-full h-48">

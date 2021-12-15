@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
 
 import Choice from "../components/Choice";
@@ -5,8 +6,8 @@ import Image from "next/image";
 import Loading from "./Loading";
 import Player from "../components/Player";
 import ShareButtons from "../components/ShareButtons";
+import { addVideoSources } from "../store/reducers/interviewReducer";
 import useInterval from "../components/useInterval";
-import { useSelector } from "react-redux";
 
 function Video() {
   const { answers } = useSelector((state) => state.interview);
@@ -21,13 +22,39 @@ function Video() {
   const [stopped, setStopped] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [download, setDownload] = useState(0);
+  const dispatch = useDispatch();
+
   useInterval(() => {
     if (download < 100) {
       setDownload(Number(download + 1));
     }
-  }, 200);
+  }, 12);
 
   useEffect(() => {
+    for (let i = 1; i < 13; i++) {
+      var req = new XMLHttpRequest();
+      req.open("GET", `http://localhost:5000/loops/${i}`, true);
+      req.responseType = "blob";
+
+      req.onload = function () {
+        // Onload is triggered even on 404
+        // so we need to check the status code
+        if (this.status === 200) {
+          var videoBlob = this.response;
+          var vid = URL.createObjectURL(videoBlob); // IE10+
+          // Video is now downloaded
+          // and we can set it as source on the video element
+          dispatch(addVideoSources(vid));
+          console.log("success");
+          console.log(vid);
+        }
+      };
+      req.onerror = function () {
+        // Error
+      };
+
+      req.send();
+    }
     video.current.load();
     video.current.currentTime = 0;
     bindChoice(41, "companies"); //good!
@@ -233,13 +260,11 @@ function Video() {
           download === 100 ? "visible" : "hidden"
         } absolute w-full h-full overflow-hidden`}
       >
-        <video ref={video} preload="auto" width={1920} height={1080}>
-          <source
-            src="https://m202.syncusercontent1.com/mfs-60:30ce871c8ca5ff6e06bfdc09c1c18b5a=============================/p/stibo_main.mp4?allowdd=0&datakey=ByonIIEywd9T32TZHbK/p3YHHQ/h753WBuDypxYvQRAL3gmkUcyvNaCV4gVgqHjYLMRXHfPjTm8QNJa9pf/wuWoZM++B/miV0yOESOiX9ExUkHmJFilXiXT937riLCNRYACBqo0Ebv46kr9H1xqDrI4ewWJSkh3HkGxme28IyRRarI5aDXvl0AVidPksQLwghQZ7rJKCXVLzU1sFv9ucRwmbcNq35UG8+QFDkRtmmIqIkIPreY+a7gBNqgyGGbQLN8AZwqnvBJbPdF5HAMJgqkXIhmOuWaYjLfVCwvMua+4Co5JFt5UV+FRFI6VUn1RjhWuubZvPY76HxmBmafdJ0A&engine=ln-1.11.7&errurl=Pai68cRCg/1eFltxhizgjAR/YwgkwWTSeie+Z8ERjC29wxrK+RYQGx5D6fNSwxEwGBNKK6cvzTiTGMeGBgfGGLiDFzjLaB9R4Pt7xhzOpyRECCmdXQco3WtRCnMipJn0IUt/lRL73V98wx2mfoFfprHYji4jTFlFklRsj5V8WNN25ogz53Xwc2nhwHSUM7AbQKoY7q5kqS+ieldNdrx7FsToqE1PbM7mumUWD2NPNqsobMLxYn4yK7mBK44iLXqmInkJQmNC0JEDN1qW0LEpZ0rKVf1kGaC0sxhGY4/G2/ltIpuT1+8ds6LeT6FueDq+Y7Ls+95lGPP7WCGcvm5dnw==&header1=Q29udGVudC1UeXBlOiB2aWRlby9tcDQ&header2=Q29udGVudC1EaXNwb3NpdGlvbjogaW5saW5lOyBmaWxlbmFtZT0ic3RpYm9fbWFpbi5tcDQiO2ZpbGVuYW1lKj1VVEYtOCcnc3RpYm9fbWFpbi5tcDQ7&ipaddress=1346270556&linkcachekey=fcf79cac0&linkoid=1252370013&mode=101&sharelink_id=7016697890013&timestamp=1639139422848&uagent=b274bf3fe732d1c6ef10617981b01b2389f6a386&signature=42f27da8922e80ae6d63a58e060efde4b93f7054&cachekey=60:30ce871c8ca5ff6e06bfdc09c1c18b5a============================="
-            type="video/mp4"
-          />
+        <video ref={video} preload="auto">
+          <source src="http://localhost:5000/video" type="video/mp4" />
         </video>
       </div>
+      0
       {showForm ? (
         <div
           className={`${
