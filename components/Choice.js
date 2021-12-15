@@ -8,22 +8,6 @@ import { addAnswer } from "../store/reducers/interviewReducer";
 function Choice({ question, onClick }) {
   const dispatch = useDispatch();
   const { videoSources } = useSelector((state) => state.interview);
-  // const video1 = useRef();
-  // useEffect(() => {
-  //   var r = new XMLHttpRequest();
-  //   r.onload = function () {
-  //     video1.current.src = URL.createObjectURL(r.response);
-  //     video1.current.load();
-  //   };
-
-  //   r.open("GET", "../assets/videos/loop1.mp4");
-
-  //   r.responseType = "blob";
-  //   r.send();
-  // }, []);
-  {
-    console.log(videoSources);
-  }
 
   function choose(choice) {
     dispatch(addAnswer(choice));
@@ -63,9 +47,7 @@ function Choice({ question, onClick }) {
           src={videoSources[3].src}
           choice1="That we provide you with a research problem"
           choice2="To work on your own idea"
-          onClick1={() =>
-            choose({ 4: "That we provide you with a research problem" })
-          }
+          onClick1={() => choose({ 4: "That we provide you with a research problem" })}
           onClick2={() => choose({ 4: "To work on your own idea" })}
         />
       ) : null}
@@ -74,9 +56,7 @@ function Choice({ question, onClick }) {
           src={videoSources[4].src}
           choice1="To work with something you already know"
           choice2="To investigate unknown teritorry"
-          onClick1={() =>
-            choose({ 5: "To work with something you already know" })
-          }
+          onClick1={() => choose({ 5: "To work with something you already know" })}
           onClick2={() => choose({ 5: "To investigate unknown teritorry" })}
         />
       ) : null}
@@ -103,9 +83,7 @@ function Choice({ question, onClick }) {
           src={videoSources[7].src}
           choice1="An open environment with other people"
           choice2="My own quiet office space"
-          onClick1={() =>
-            choose({ 8: "An open environment with other people" })
-          }
+          onClick1={() => choose({ 8: "An open environment with other people" })}
           onClick2={() => choose({ 8: "My own quiet office space" })}
         />
       ) : null}
@@ -124,9 +102,7 @@ function Choice({ question, onClick }) {
           choice1="I'm joining an established company"
           choice2="I'm using my project to kickstart my own startup"
           onClick1={() => choose({ 10: "I'm joining an established company" })}
-          onClick2={() =>
-            choose({ 10: "I'm using my project to kickstart my own startup" })
-          }
+          onClick2={() => choose({ 10: "I'm using my project to kickstart my own startup" })}
         />
       ) : null}
 
@@ -151,9 +127,7 @@ function Choice({ question, onClick }) {
         />
       ) : null}
 
-      {question === "companies" ? (
-        <Companies onClick={() => choose({ 0: "Stibo Accelerator" })} />
-      ) : null}
+      {question === "companies" ? <Companies onClick={() => choose({ 0: "Stibo Accelerator" })} /> : null}
     </div>
   );
 }

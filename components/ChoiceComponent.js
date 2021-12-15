@@ -1,7 +1,16 @@
+import { useEffect, useRef } from "react";
+
 function ChoiceComponent({ onClick1, onClick2, src, choice1, choice2, muted }) {
+  const video = useRef();
+
+  useEffect(() => {
+    video.current.load();
+  }, [src]);
+
   return (
     <div className=" flex justify-center items-end h-screen transition transform duration-300">
       <video
+        ref={video}
         src={src}
         muted={muted}
         loop
