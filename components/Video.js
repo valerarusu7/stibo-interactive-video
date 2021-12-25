@@ -33,7 +33,7 @@ function Video() {
   useEffect(() => {
     for (let i = 1; i < 13; i++) {
       var req = new XMLHttpRequest();
-      req.open("GET", `http://localhost:5000/loops/${i}`, true);
+      req.open("GET", `https://stibo.herokuapp.com/loops/${i}`, true);
       req.responseType = "blob";
 
       req.onload = function () {
@@ -261,7 +261,7 @@ function Video() {
         } absolute w-full h-full overflow-hidden`}
       >
         <video ref={video} preload="auto">
-          <source src="http://localhost:5000/video" type="video/mp4" />
+          <source src="https://stibo.herokuapp.com/video" type="video/mp4" />
         </video>
       </div>
       0
